@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "168406562516",
+    "project_id": "app-movil-7aef6",
+    "storage_bucket": "app-movil-7aef6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:168406562516:android:d480ca7f7aea7b520d6d41",
+        "android_client_info": {
+          "package_name": "com.george.app_movil"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "168406562516-rrt5rnkeq4okcr0sigqdt0prcj6mag1r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWP0NENHXB4nbgMo52xMF0-eYISSX23BA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "168406562516-rrt5rnkeq4okcr0sigqdt0prcj6mag1r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
