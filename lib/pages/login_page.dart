@@ -1,3 +1,4 @@
+import 'package:app_movil/pages/forgot_pss_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,10 +17,20 @@ class _LoginPageState extends State<LoginPage> {
   final _passswordController = TextEditingController();
 
   Future singIn() async {
+    //loading circle
+    showDialog(
+      context: context,
+      builder: (context) {
+        return Center(child: CircularProgressIndicator());
+      },
+    );
+
     await FirebaseAuth.instance.signInWithEmailAndPassword(
       email: _emailController.text.trim(),
       password: _passswordController.text.trim(),
     );
+
+    Navigator.of(context).pop();
   }
 
   @override
@@ -32,13 +43,14 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       body: Center(
         child: SingleChildScrollView(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Icon(
-              Icons.flutter_dash,
+              Icons.supervised_user_circle_outlined,
               size: 100,
+              color: Colors.orange,
             ),
 
             SizedBox(
@@ -50,6 +62,7 @@ class _LoginPageState extends State<LoginPage> {
               'Hello Again!',
               style: GoogleFonts.bebasNeue(
                 fontSize: 52,
+                color: Colors.white,
               ),
             ),
             SizedBox(
@@ -58,9 +71,9 @@ class _LoginPageState extends State<LoginPage> {
             Text(
               'Welcome back, you/ve been missed',
               style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  color: Colors.white),
             ),
             SizedBox(
               height: 50,
@@ -117,6 +130,33 @@ class _LoginPageState extends State<LoginPage> {
               height: 10,
             ),
 
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return ForgotPasswordPage();
+                          },
+                        ),
+                      );
+                    },
+                    child: Text('Forgot Password?',
+                        style: TextStyle(
+                            color: Colors.blue, fontWeight: FontWeight.bold)),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+
             //Sing in
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -150,8 +190,9 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Not a member?',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  'Not a member? ',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.white),
                 ),
                 GestureDetector(
                     onTap: widget.showRegisterPage,

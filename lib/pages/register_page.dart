@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,6 +19,8 @@ class _RegisterPageState extends State<RegisterPage> {
   final _emailController = TextEditingController();
   final _passswordController = TextEditingController();
   final _confirmpasswordController = TextEditingController();
+  final _firstNameController = TextEditingController();
+  final _lastNameController = TextEditingController();
 
   @override
   void dispose() {
@@ -25,15 +28,30 @@ class _RegisterPageState extends State<RegisterPage> {
     _emailController.dispose();
     _passswordController.dispose();
     _confirmpasswordController.dispose();
+    _firstNameController.dispose();
+    _lastNameController.dispose();
     super.dispose();
   }
 
   Future singUp() async {
     if (passwordConfirm()) {
+      //create user
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: _emailController.text.trim(),
           password: _passswordController.text.trim());
     }
+
+    //add user details
+    addUserDetails(_firstNameController.text.trim(),
+        _lastNameController.text.trim(), _emailController.text.trim());
+  }
+
+  Future addUserDetails(String firstName, String lastName, String email) async {
+    await FirebaseFirestore.instance.collection('users').add({
+      'first name': firstName,
+      'last name': lastName,
+      'email': email,
+    });
   }
 
   bool passwordConfirm() {
@@ -48,13 +66,14 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       body: Center(
         child: SingleChildScrollView(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Icon(
-              Icons.flutter_dash,
+              Icons.supervised_user_circle_rounded,
               size: 100,
+              color: Colors.orange,
             ),
 
             SizedBox(
@@ -64,22 +83,70 @@ class _RegisterPageState extends State<RegisterPage> {
             //Hello Again
             Text(
               'Hello There!',
-              style: GoogleFonts.bebasNeue(
-                fontSize: 52,
-              ),
+              style: GoogleFonts.bebasNeue(fontSize: 52, color: Colors.white),
             ),
             SizedBox(
               height: 10,
             ),
             Text(
-              'Register below whit your details',
+              'Register below with your details',
               style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  color: Colors.white),
             ),
             SizedBox(
               height: 50,
+            ),
+
+            //Fistnametextfield
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: TextField(
+                controller: _firstNameController,
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.orange),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  hintText: 'First Name',
+                  fillColor: Colors.grey[200],
+                  filled: true,
+                ),
+              ),
+            ),
+
+            SizedBox(
+              height: 10,
+            ),
+
+            //LastNametextfield
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: TextField(
+                controller: _lastNameController,
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.orange),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  hintText: 'Last Name',
+                  fillColor: Colors.grey[200],
+                  filled: true,
+                ),
+              ),
+            ),
+
+            SizedBox(
+              height: 10,
             ),
 
             //Emailtextfield
@@ -192,8 +259,9 @@ class _RegisterPageState extends State<RegisterPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'I am a membee!',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  'I am a membee! ',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.white),
                 ),
                 GestureDetector(
                     onTap: widget.showLoginPage,
