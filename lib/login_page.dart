@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -12,6 +13,20 @@ class _LoginPageState extends State<LoginPage> {
   //controller
   final _emailController = TextEditingController();
   final _passswordController = TextEditingController();
+
+  Future singIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: _emailController.text.trim(),
+      password: _passswordController.text.trim(),
+    );
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passswordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
               'Welcome back, you/ve been missed',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 24,
+                fontSize: 18,
               ),
             ),
             SizedBox(
@@ -79,6 +94,7 @@ class _LoginPageState extends State<LoginPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: TextField(
+                obscureText: true,
                 controller: _passswordController,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
@@ -95,31 +111,39 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
+
             SizedBox(
               height: 10,
             ),
+
+            //Sing in
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Container(
-                padding: EdgeInsets.all(20.0),
-                decoration: BoxDecoration(
-                  color: Colors.orange,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Center(
-                  child: Text(
-                    'Sign in',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
+              child: GestureDetector(
+                onTap: singIn,
+                child: Container(
+                  padding: EdgeInsets.all(20.0),
+                  decoration: BoxDecoration(
+                    color: Colors.orange,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Sign in',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
+
             SizedBox(
               height: 25,
             ),
+
             //not a member? register now
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
