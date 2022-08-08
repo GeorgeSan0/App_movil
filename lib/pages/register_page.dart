@@ -21,6 +21,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final _confirmpasswordController = TextEditingController();
   final _firstNameController = TextEditingController();
   final _lastNameController = TextEditingController();
+  final _ageController = TextEditingController();
 
   @override
   void dispose() {
@@ -30,6 +31,7 @@ class _RegisterPageState extends State<RegisterPage> {
     _confirmpasswordController.dispose();
     _firstNameController.dispose();
     _lastNameController.dispose();
+    _ageController.dispose();
     super.dispose();
   }
 
@@ -42,14 +44,19 @@ class _RegisterPageState extends State<RegisterPage> {
     }
 
     //add user details
-    addUserDetails(_firstNameController.text.trim(),
-        _lastNameController.text.trim(), _emailController.text.trim());
+    addUserDetails(
+        _firstNameController.text.trim(),
+        _lastNameController.text.trim(),
+        int.parse(_ageController.text.trim()),
+        _emailController.text.trim());
   }
 
-  Future addUserDetails(String firstName, String lastName, String email) async {
+  Future addUserDetails(
+      String firstName, String lastName, int age, String email) async {
     await FirebaseFirestore.instance.collection('users').add({
       'first name': firstName,
       'last name': lastName,
+      'age': age,
       'email': email,
     });
   }
@@ -141,6 +148,31 @@ class _RegisterPageState extends State<RegisterPage> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   hintText: 'Apellidos',
+                  fillColor: Colors.grey[200],
+                  filled: true,
+                ),
+              ),
+            ),
+
+            const SizedBox(
+              height: 10,
+            ),
+
+            //Agetextfield
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: TextField(
+                controller: _ageController,
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.orange),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  hintText: 'Edad',
                   fillColor: Colors.grey[200],
                   filled: true,
                 ),
