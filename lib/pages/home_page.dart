@@ -18,13 +18,13 @@ class _HomePageState extends State<HomePage> {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('Signed In ' + user.email!),
+          Text('Ingresaste ' + user.email!),
           MaterialButton(
             onPressed: () {
               FirebaseAuth.instance.signOut();
             },
             color: Colors.orange,
-            child: Text('Sign Out'),
+            child: const Text('Salir'),
           )
         ],
       )),

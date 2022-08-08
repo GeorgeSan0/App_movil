@@ -80,7 +80,7 @@ class _FrontPageState extends State<FrontPage> {
               ),
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => MainPage()));
+                    MaterialPageRoute(builder: (context) => const MainPage()));
               },
             )
             // ElevatedButton(

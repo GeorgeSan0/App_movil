@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class LoginPage extends StatefulWidget {
   final VoidCallback showRegisterPage;
-  LoginPage({Key? key, required this.showRegisterPage}) : super(key: key);
+  const LoginPage({Key? key, required this.showRegisterPage}) : super(key: key);
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -21,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
     showDialog(
       context: context,
       builder: (context) {
-        return Center(child: CircularProgressIndicator());
+        return const Center(child: CircularProgressIndicator());
       },
     );
 
@@ -47,35 +47,35 @@ class _LoginPageState extends State<LoginPage> {
       body: Center(
         child: SingleChildScrollView(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Icon(
+            const Icon(
               Icons.supervised_user_circle_outlined,
               size: 100,
               color: Colors.orange,
             ),
 
-            SizedBox(
+            const SizedBox(
               height: 75,
             ),
 
             //Hello Again
             Text(
-              'Hello Again!',
+              'Hola de Nuevo!!',
               style: GoogleFonts.bebasNeue(
                 fontSize: 52,
                 color: Colors.white,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Text(
-              'Welcome back, you/ve been missed',
+            const Text(
+              'Bienvenido, Vive una Experiencia Inolvidable',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
                   color: Colors.white),
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
 
@@ -86,21 +86,21 @@ class _LoginPageState extends State<LoginPage> {
                 controller: _emailController,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide: const BorderSide(color: Colors.white),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.orange),
+                    borderSide: const BorderSide(color: Colors.orange),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  hintText: 'Email',
+                  hintText: 'Correo',
                   fillColor: Colors.grey[200],
                   filled: true,
                 ),
               ),
             ),
 
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
 
@@ -112,21 +112,21 @@ class _LoginPageState extends State<LoginPage> {
                 controller: _passswordController,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide: const BorderSide(color: Colors.white),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.orange),
+                    borderSide: const BorderSide(color: Colors.orange),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  hintText: 'Password',
+                  hintText: 'Contraseña',
                   fillColor: Colors.grey[200],
                   filled: true,
                 ),
               ),
             ),
 
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
 
@@ -146,14 +146,14 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       );
                     },
-                    child: Text('Forgot Password?',
+                    child: const Text('Recuperar Contraseña?',
                         style: TextStyle(
                             color: Colors.blue, fontWeight: FontWeight.bold)),
                   ),
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
 
@@ -163,14 +163,14 @@ class _LoginPageState extends State<LoginPage> {
               child: GestureDetector(
                 onTap: singIn,
                 child: Container(
-                  padding: EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.all(20.0),
                   decoration: BoxDecoration(
                     color: Colors.orange,
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: Center(
+                  child: const Center(
                     child: Text(
-                      'Sign in',
+                      'Ingresar',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
@@ -181,7 +181,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
 
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
 
@@ -189,18 +189,19 @@ class _LoginPageState extends State<LoginPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  'Not a member? ',
+                const Text(
+                  'No eres Miembro? ',
                   style: TextStyle(
                       fontWeight: FontWeight.bold, color: Colors.white),
                 ),
                 GestureDetector(
-                    onTap: widget.showRegisterPage,
-                    child: Text(
-                      'Register now',
-                      style: TextStyle(
-                          color: Colors.blue, fontWeight: FontWeight.bold),
-                    ))
+                  onTap: widget.showRegisterPage,
+                  child: const Text(
+                    'Registrate Ahora',
+                    style: TextStyle(
+                        color: Colors.blue, fontWeight: FontWeight.bold),
+                  ),
+                )
               ],
             )
           ]),

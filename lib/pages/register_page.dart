@@ -70,32 +70,34 @@ class _RegisterPageState extends State<RegisterPage> {
       body: Center(
         child: SingleChildScrollView(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Icon(
+            const Icon(
               Icons.supervised_user_circle_rounded,
               size: 100,
               color: Colors.orange,
             ),
 
-            SizedBox(
+            const SizedBox(
               height: 75,
             ),
 
             //Hello Again
             Text(
-              'Hello There!',
+              'Hey Holaaa!',
               style: GoogleFonts.bebasNeue(fontSize: 52, color: Colors.white),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Text(
-              'Register below with your details',
+
+            const Text(
+              'Registrate con tu información',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
                   color: Colors.white),
             ),
-            SizedBox(
+
+            const SizedBox(
               height: 50,
             ),
 
@@ -106,21 +108,21 @@ class _RegisterPageState extends State<RegisterPage> {
                 controller: _firstNameController,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide: const BorderSide(color: Colors.white),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.orange),
+                    borderSide: const BorderSide(color: Colors.orange),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  hintText: 'First Name',
+                  hintText: 'Nombres',
                   fillColor: Colors.grey[200],
                   filled: true,
                 ),
               ),
             ),
 
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
 
@@ -131,21 +133,21 @@ class _RegisterPageState extends State<RegisterPage> {
                 controller: _lastNameController,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide: const BorderSide(color: Colors.white),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.orange),
+                    borderSide: const BorderSide(color: Colors.orange),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  hintText: 'Last Name',
+                  hintText: 'Apellidos',
                   fillColor: Colors.grey[200],
                   filled: true,
                 ),
               ),
             ),
 
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
 
@@ -156,21 +158,21 @@ class _RegisterPageState extends State<RegisterPage> {
                 controller: _emailController,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide: const BorderSide(color: Colors.white),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.orange),
+                    borderSide: const BorderSide(color: Colors.orange),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  hintText: 'Email',
+                  hintText: 'Correo',
                   fillColor: Colors.grey[200],
                   filled: true,
                 ),
               ),
             ),
 
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
 
@@ -182,21 +184,21 @@ class _RegisterPageState extends State<RegisterPage> {
                 controller: _passswordController,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide: const BorderSide(color: Colors.white),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.orange),
+                    borderSide: const BorderSide(color: Colors.orange),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  hintText: 'Password',
+                  hintText: 'Contraseña',
                   fillColor: Colors.grey[200],
                   filled: true,
                 ),
               ),
             ),
 
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
 
@@ -208,21 +210,21 @@ class _RegisterPageState extends State<RegisterPage> {
                 controller: _confirmpasswordController,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide: const BorderSide(color: Colors.white),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.orange),
+                    borderSide: const BorderSide(color: Colors.orange),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  hintText: 'Confirm Password',
+                  hintText: 'Confirmar Contraseña',
                   fillColor: Colors.grey[200],
                   filled: true,
                 ),
               ),
             ),
 
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
 
@@ -232,14 +234,14 @@ class _RegisterPageState extends State<RegisterPage> {
               child: GestureDetector(
                 onTap: singUp,
                 child: Container(
-                  padding: EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.all(20.0),
                   decoration: BoxDecoration(
                     color: Colors.orange,
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: Center(
+                  child: const Center(
                     child: Text(
-                      'Sign Up',
+                      'Entrar',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
@@ -250,7 +252,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
             ),
 
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
 
@@ -258,15 +260,15 @@ class _RegisterPageState extends State<RegisterPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  'I am a membee! ',
+                const Text(
+                  'Soy Miembro! ',
                   style: TextStyle(
                       fontWeight: FontWeight.bold, color: Colors.white),
                 ),
                 GestureDetector(
                     onTap: widget.showLoginPage,
-                    child: Text(
-                      'Login now',
+                    child: const Text(
+                      'Iniciar Sesion',
                       style: TextStyle(
                           color: Colors.blue, fontWeight: FontWeight.bold),
                     ))

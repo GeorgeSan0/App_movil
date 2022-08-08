@@ -24,8 +24,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       showDialog(
         context: context,
         builder: (context) {
-          return AlertDialog(
-            content: Text('Password reset link sent! check your email'),
+          return const AlertDialog(
+            content: Text('Correo de Recuperacion enviado, revisa tu correo'),
           );
         },
       );
@@ -53,15 +53,15 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Padding(
+          const Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25.0),
-            child: Text(
-              'Enter your Email and we will sen you a email',
+            child: const Text(
+              'Ingresa tu Correo con el cual quieres recuperar tu contrseña',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 20, color: Colors.white),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Padding(
@@ -70,14 +70,14 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               controller: _emailController,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
+                  borderSide: const BorderSide(color: Colors.white),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.orange),
+                  borderSide: const BorderSide(color: Colors.orange),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                hintText: 'Email',
+                hintText: 'Correo',
                 fillColor: Colors.grey[200],
                 filled: true,
               ),
@@ -85,7 +85,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           ),
           MaterialButton(
             onPressed: passwordReset,
-            child: Text('Reset Password'),
+            child: const Text('Recuperar Contraseña'),
             color: Colors.orange,
           )
         ],
