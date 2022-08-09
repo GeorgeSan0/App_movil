@@ -198,7 +198,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 color: Colors.orange,
                 child: Text(
-                  "Explorar",
+                  "ExplorarR",
                   style:
                       GoogleFonts.bebasNeue(fontSize: 30, color: Colors.white),
                 ),
