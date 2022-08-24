@@ -88,24 +88,7 @@ class _HomePageState extends State<HomePage> {
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                       fontSize: 20),
-                ),
-                Text(
-                  user.email! + '\n',
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      fontSize: 20),
-                ),
-                Text(
-                  user.email! + '\n',
-                  //'Firs: ${data['first name']}',
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      fontSize: 20),
-                ),
+                )
               ],
             ),
             const Padding(

@@ -15,22 +15,62 @@ class _LoginPageState extends State<LoginPage> {
   //controller
   final _emailController = TextEditingController();
   final _passswordController = TextEditingController();
+  bool _obscureText = true;
 
   Future singIn() async {
-    //loading circle
-    showDialog(
-      context: context,
-      builder: (context) {
-        return const Center(child: CircularProgressIndicator());
-      },
-    );
-
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: _emailController.text.trim(),
-      password: _passswordController.text.trim(),
-    );
-
-    Navigator.of(context).pop();
+    if (_emailController.text.toString() == '' ||
+        _passswordController.text.toString() == '') {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text(
+            'Llene Todos los campos',
+            style: TextStyle(fontSize: 20),
+          ),
+          duration: const Duration(milliseconds: 1500),
+          width: 300.0,
+          padding: const EdgeInsets.symmetric(
+            horizontal: 30.0,
+          ),
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(
+                  10.0)), // Inner padding for SnackBar content.
+        ),
+      );
+    } else {
+      try {
+        await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: _emailController.text.trim(),
+          password: _passswordController.text.trim(),
+        );
+        showDialog(
+          context: context,
+          builder: (context) {
+            return const AlertDialog(
+              content: Text('Ingreso de Sesion Exitosa'),
+            );
+          },
+        );
+      } on FirebaseAuthException catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: const Text(
+              'Usuario / Contra incorrectos.....',
+              style: TextStyle(fontSize: 20),
+            ),
+            duration: const Duration(milliseconds: 1500),
+            width: 300.0,
+            padding: const EdgeInsets.symmetric(
+              horizontal: 30.0,
+            ),
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(
+                    10.0)), // Inner padding for SnackBar content.
+          ),
+        );
+      }
+    }
   }
 
   @override
@@ -108,7 +148,7 @@ class _LoginPageState extends State<LoginPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: TextField(
-                obscureText: true,
+                obscureText: _obscureText,
                 controller: _passswordController,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
@@ -122,6 +162,15 @@ class _LoginPageState extends State<LoginPage> {
                   hintText: 'Contraseña',
                   fillColor: Colors.grey[200],
                   filled: true,
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      _obscureText = !_obscureText;
+                      setState(() {});
+                    },
+                    icon: Icon(
+                      _obscureText ? Icons.visibility_off : Icons.visibility,
+                    ),
+                  ),
                 ),
               ),
             ),
