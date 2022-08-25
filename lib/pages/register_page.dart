@@ -40,17 +40,42 @@ class _RegisterPageState extends State<RegisterPage> {
   Future singUp() async {
     if (passwordConfirm()) {
       //create user
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: _emailController.text.trim(),
-          password: _passswordController.text.trim());
+      try {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: _emailController.text,
+          password: _passswordController.text,
+        );
+        showDialog(
+          context: context,
+          builder: (context) {
+            return const AlertDialog(
+              content: Text('Creacion de Sesion Exitosa'),
+            );
+          },
+        );
+        //add user details
+        addUserDetails(_firstNameController.text, _lastNameController.text,
+            int.parse(_ageController.text), _emailController.text);
+      } on FirebaseAuthException catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: const Text(
+              'Campos Incorrectos',
+              style: TextStyle(fontSize: 20),
+            ),
+            duration: const Duration(milliseconds: 1500),
+            width: 300.0,
+            padding: const EdgeInsets.symmetric(
+              horizontal: 30.0,
+            ),
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(
+                    10.0)), // Inner padding for SnackBar content.
+          ),
+        );
+      }
     }
-
-    //add user details
-    addUserDetails(
-        _firstNameController.text.trim(),
-        _lastNameController.text.trim(),
-        int.parse(_ageController.text.trim()),
-        _emailController.text.trim());
   }
 
   Future addUserDetails(
@@ -79,35 +104,24 @@ class _RegisterPageState extends State<RegisterPage> {
       body: Center(
         child: SingleChildScrollView(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            const Icon(
-              Icons.supervised_user_circle_rounded,
-              size: 100,
-              color: Colors.orange,
-            ),
-
-            const SizedBox(
-              height: 75,
-            ),
+            Image(image: AssetImage('assets/register.png')),
 
             //Hello Again
-            Text(
-              'Hey Holaaa!',
-              style: GoogleFonts.bebasNeue(fontSize: 52, color: Colors.white),
-            ),
+
             const SizedBox(
               height: 10,
             ),
 
             const Text(
-              'Registrate con tu información',
+              'Registrate',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 18,
+                  fontSize: 27,
                   color: Colors.white),
             ),
 
             const SizedBox(
-              height: 50,
+              height: 40,
             ),
 
             //Fistnametextfield
@@ -263,31 +277,27 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
 
             //Sing in
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: GestureDetector(
-                onTap: singUp,
-                child: Container(
-                  padding: const EdgeInsets.all(20.0),
-                  decoration: BoxDecoration(
-                    color: Colors.orange,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: const Center(
-                    child: Text(
-                      'Entrar',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                      ),
+
+            Container(
+              padding: EdgeInsets.only(left: 55, top: 0, right: 70),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CircleAvatar(
+                    radius: 30,
+                    backgroundColor: Colors.orange,
+                    child: IconButton(
+                      color: Colors.white,
+                      onPressed: singUp,
+                      icon: const Icon(Icons.arrow_forward),
                     ),
-                  ),
-                ),
+                  )
+                ],
               ),
             ),
 
             const SizedBox(
-              height: 25,
+              height: 15,
             ),
 
             //not a member? register now

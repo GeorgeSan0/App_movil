@@ -61,178 +61,179 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: Center(
-        child: SingleChildScrollView(
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            const Icon(
-              Icons.supervised_user_circle_outlined,
-              size: 100,
-              color: Colors.orange,
-            ),
+    return Container(
+      decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/login.png'), fit: BoxFit.cover)),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Center(
+          child: SingleChildScrollView(
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Image(image: AssetImage('assets/montain.png')),
 
-            const SizedBox(
-              height: 75,
-            ),
-
-            //Hello Again
-            Text(
-              'Hola de Nuevo!!',
-              style: GoogleFonts.bebasNeue(
-                fontSize: 52,
-                color: Colors.white,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              'Bienvenido, Vive una Experiencia Inolvidable',
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                  color: Colors.white),
-            ),
-            const SizedBox(
-              height: 50,
-            ),
-
-            //Emailtextfield
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: TextField(
-                controller: _emailController,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.white),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.orange),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  hintText: 'Correo',
-                  fillColor: Colors.grey[200],
-                  filled: true,
+              //Hello Again
+              Text(
+                'Hola de Nuevo!!',
+                style: GoogleFonts.bebasNeue(
+                  fontSize: 52,
+                  color: Colors.white,
                 ),
               ),
-            ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Text(
+                'Bienvenido, Vive una Experiencia Inolvidable',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    color: Colors.white),
+              ),
+              const SizedBox(
+                height: 50,
+              ),
 
-            const SizedBox(
-              height: 10,
-            ),
-
-            //password textfield
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: TextField(
-                obscureText: _obscureText,
-                controller: _passswordController,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.white),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.orange),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  hintText: 'Contraseña',
-                  fillColor: Colors.grey[200],
-                  filled: true,
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      _obscureText = !_obscureText;
-                      setState(() {});
-                    },
-                    icon: Icon(
-                      _obscureText ? Icons.visibility_off : Icons.visibility,
+              //Emailtextfield
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: TextField(
+                  controller: _emailController,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(12),
                     ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.orange),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    hintText: 'Correo',
+                    fillColor: Colors.grey[200],
+                    filled: true,
                   ),
                 ),
               ),
-            ),
 
-            const SizedBox(
-              height: 10,
-            ),
-
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return ForgotPasswordPage();
-                          },
-                        ),
-                      );
-                    },
-                    child: const Text('Recuperar Contraseña?',
-                        style: TextStyle(
-                            color: Colors.blue, fontWeight: FontWeight.bold)),
-                  ),
-                ],
+              const SizedBox(
+                height: 10,
               ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
 
-            //Sing in
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: GestureDetector(
-                onTap: singIn,
-                child: Container(
-                  padding: const EdgeInsets.all(20.0),
-                  decoration: BoxDecoration(
-                    color: Colors.orange,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: const Center(
-                    child: Text(
-                      'Ingresar',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
+              //password textfield
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: TextField(
+                  obscureText: _obscureText,
+                  controller: _passswordController,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.orange),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    hintText: 'Contraseña',
+                    fillColor: Colors.grey[200],
+                    filled: true,
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        _obscureText = !_obscureText;
+                        setState(() {});
+                      },
+                      icon: Icon(
+                        _obscureText ? Icons.visibility_off : Icons.visibility,
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
 
-            const SizedBox(
-              height: 25,
-            ),
+              const SizedBox(
+                height: 10,
+              ),
 
-            //not a member? register now
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'No eres Miembro? ',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.white),
+              //Recuperar contraseña
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return ForgotPasswordPage();
+                            },
+                          ),
+                        );
+                      },
+                      child: const Text('Recuperar Contraseña?',
+                          style: TextStyle(
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15)),
+                    ),
+                  ],
                 ),
-                GestureDetector(
-                  onTap: widget.showRegisterPage,
-                  child: const Text(
-                    'Registrate Ahora',
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+
+              //Sing in
+
+              Container(
+                padding: EdgeInsets.only(left: 55, top: 0, right: 70),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CircleAvatar(
+                      radius: 30,
+                      backgroundColor: Colors.orange,
+                      child: IconButton(
+                        color: Colors.white,
+                        onPressed: singIn,
+                        icon: const Icon(Icons.arrow_forward),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+
+              const SizedBox(
+                height: 25,
+              ),
+
+              //not a member? register now
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'No eres Miembro? ',
                     style: TextStyle(
-                        color: Colors.blue, fontWeight: FontWeight.bold),
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontSize: 17),
                   ),
-                )
-              ],
-            )
-          ]),
+                  GestureDetector(
+                    onTap: widget.showRegisterPage,
+                    child: const Text(
+                      'Registrate Ahora',
+                      style: TextStyle(
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 17),
+                    ),
+                  )
+                ],
+              )
+            ]),
+          ),
         ),
       ),
     );

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_carousel_slider/carousel_slider.dart';
 import 'package:flutter_carousel_slider/carousel_slider_indicators.dart';
 import 'package:flutter_carousel_slider/carousel_slider_transforms.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'hola.dart';
 
@@ -19,26 +20,12 @@ class _CarouselState extends State<Carousel> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Colors.orange,
-        title: const Text(
+        title: Text(
           "EXPLORE",
-          style: TextStyle(
-            fontWeight: FontWeight.w500,
-            fontSize: 18.0,
-            color: Colors.white,
-          ),
+          style: GoogleFonts.bebasNeue(fontSize: 30, color: Colors.black),
         ),
-        actions: [
-          GestureDetector(
-            onTap: () {
-              FirebaseAuth.instance.signOut();
-            },
-            child: const Icon(
-              Icons.logout,
-              color: Colors.white,
-            ),
-          )
-        ],
       ),
       body: CarouselSlider(
           slideTransform: CubeTransform(),
@@ -153,7 +140,7 @@ class _CarouselState extends State<Carousel> {
                     padding: EdgeInsets.symmetric(vertical: 10),
                   ),
                   FloatingActionButton(
-                    backgroundColor: Colors.amber,
+                    backgroundColor: Colors.orange,
                     onPressed: () {
                       Navigator.push(
                         context,
