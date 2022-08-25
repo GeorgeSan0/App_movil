@@ -1,3 +1,4 @@
+import 'package:app_movil/pages/explore_hoteles.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -175,13 +176,18 @@ class _HomePageState extends State<HomePage> {
             ),
             ButtonWidgetEx2(
               child2: MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Explorer()),
+                  );
+                },
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
                 ),
                 color: Colors.orange,
                 child: Text(
-                  "ExplorarR",
+                  "Explorar",
                   style:
                       GoogleFonts.bebasNeue(fontSize: 30, color: Colors.white),
                 ),
