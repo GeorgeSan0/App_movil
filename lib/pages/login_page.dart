@@ -176,7 +176,7 @@ class _LoginPageState extends State<LoginPage> {
                           style: TextStyle(
                               color: Colors.blue,
                               fontWeight: FontWeight.bold,
-                              fontSize: 15)),
+                              fontSize: 17)),
                     ),
                   ],
                 ),
@@ -186,7 +186,6 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               //Sing in
-
               Container(
                 padding: EdgeInsets.only(left: 55, top: 0, right: 70),
                 child: Row(
