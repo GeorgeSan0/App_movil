@@ -13,13 +13,7 @@ class FrontPage extends StatefulWidget {
 class _FrontPageState extends State<FrontPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('assets/login.png'), fit: BoxFit.cover)),
-    );
-    child:
-    Scaffold(
+    return Scaffold(
       backgroundColor: Colors.transparent,
       body: new Stack(
         fit: StackFit.expand,
