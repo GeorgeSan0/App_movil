@@ -1,4 +1,3 @@
-import 'package:app_movil/pages/explore_hoteles.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -43,28 +42,29 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black,
-        appBar: AppBar(
-          title: Text(
-            user.email!,
-            style: GoogleFonts.bebasNeue(fontSize: 30, color: Colors.white),
-          ),
-          //Text(user.email!),
-          centerTitle: true,
-          backgroundColor: Colors.orange,
-          actions: [
-            GestureDetector(
-              onTap: () {
-                FirebaseAuth.instance.signOut();
-              },
-              child: const Icon(
-                Icons.logout,
-                color: Colors.white,
-              ),
-            )
-          ],
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text(
+          user.email!,
+          style: GoogleFonts.bebasNeue(fontSize: 30, color: Colors.white),
         ),
-        body: ListView(children: <Widget>[
+        //Text(user.email!),
+        centerTitle: true,
+        backgroundColor: Colors.orange,
+        actions: [
+          GestureDetector(
+            onTap: () {
+              FirebaseAuth.instance.signOut();
+            },
+            child: const Icon(
+              Icons.logout,
+              color: Colors.white,
+            ),
+          )
+        ],
+      ),
+      body: ListView(
+        children: <Widget>[
           Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
             Container(
               padding: const EdgeInsets.all(5),
@@ -148,65 +148,34 @@ class _HomePageState extends State<HomePage> {
               padding: EdgeInsets.symmetric(vertical: 60),
             ),
           ]),
-          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 10),
-            ),
-            ButtonWidgetEx2(
-              child2: DropdownButton(
-                onChanged: (t) {
-                  setState(() {
-                    dropDownValue1 = t as int;
-                  });
-                },
-                value: dropDownValue1,
-                items: const [
-                  DropdownMenuItem(value: 1, child: Text("1 día")),
-                  DropdownMenuItem(value: 2, child: Text("2 días")),
-                  DropdownMenuItem(value: 3, child: Text("4 días")),
-                  DropdownMenuItem(value: 4, child: Text("6 días")),
-                  DropdownMenuItem(value: 5, child: Text("7 días")),
-                ],
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 10),
               ),
-            ),
-          ]),
-          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 100),
-            ),
-            ButtonWidgetEx2(
-              child2: MaterialButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Explorer()),
-                  );
-                },
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                color: Colors.orange,
-                child: Text(
-                  "Explorar",
-                  style:
-                      GoogleFonts.bebasNeue(fontSize: 30, color: Colors.white),
+              ButtonWidgetEx2(
+                child2: DropdownButton(
+                  onChanged: (t) {
+                    setState(() {
+                      dropDownValue1 = t as int;
+                    });
+                  },
+                  value: dropDownValue1,
+                  items: const [
+                    DropdownMenuItem(value: 1, child: Text("1 día")),
+                    DropdownMenuItem(value: 2, child: Text("2 días")),
+                    DropdownMenuItem(value: 3, child: Text("4 días")),
+                    DropdownMenuItem(value: 4, child: Text("6 días")),
+                    DropdownMenuItem(value: 5, child: Text("7 días")),
+                  ],
                 ),
               ),
-            ),
-            // Expanded(
-            //     child: FutureBuilder(
-            //         future: getDocId(),
-            //         builder: (context, sanpshot) {
-            //           return ListView.builder(
-            //               itemCount: docIDs.length,
-            //               itemBuilder: (context, index) {
-            //                 return ListTile(
-            //                   title: GetUserName(documentId: docIDs[index]),
-            //                 );
-            //               });
-            //         }))
-          ]),
-        ]));
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
 
