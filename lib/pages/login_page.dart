@@ -23,13 +23,22 @@ class _LoginPageState extends State<LoginPage> {
         email: _emailController.text,
         password: _passswordController.text,
       );
-      showDialog(
-        context: context,
-        builder: (context) {
-          return const AlertDialog(
-            content: Text('Ingreso de Sesion Exitosa'),
-          );
-        },
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text(
+            'Ingreso de Sesion Exitosa',
+            style: TextStyle(fontSize: 20),
+          ),
+          duration: const Duration(milliseconds: 1500),
+          width: 300.0,
+          padding: const EdgeInsets.symmetric(
+            horizontal: 30.0,
+          ),
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(
+                  10.0)), // Inner padding for SnackBar content.
+        ),
       );
     } on FirebaseAuthException catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
