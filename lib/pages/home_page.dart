@@ -1,9 +1,12 @@
+import 'package:app_movil/pages/login_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../read data/get_user_name.dart';
+import 'carousel_page.dart';
+import 'front_page.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -42,7 +45,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text(
           user.email!,
@@ -172,6 +175,23 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ],
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) => Carousel(),
+                ),
+              );
+            },
+            child: const Text(
+              "Regístrese",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
           ),
         ],
       ),

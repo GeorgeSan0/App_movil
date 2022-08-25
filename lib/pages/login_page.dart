@@ -18,12 +18,24 @@ class _LoginPageState extends State<LoginPage> {
   bool _obscureText = true;
 
   Future singIn() async {
-    if (_emailController.text.toString() == '' ||
-        _passswordController.text.toString() == '') {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text,
+        password: _passswordController.text,
+      );
+      showDialog(
+        context: context,
+        builder: (context) {
+          return const AlertDialog(
+            content: Text('Ingreso de Sesion Exitosa'),
+          );
+        },
+      );
+    } on FirebaseAuthException catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: const Text(
-            'Llene Todos los campos',
+            'Usuario / Contra incorrectos.....',
             style: TextStyle(fontSize: 20),
           ),
           duration: const Duration(milliseconds: 1500),
@@ -37,39 +49,6 @@ class _LoginPageState extends State<LoginPage> {
                   10.0)), // Inner padding for SnackBar content.
         ),
       );
-    } else {
-      try {
-        await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: _emailController.text.trim(),
-          password: _passswordController.text.trim(),
-        );
-        showDialog(
-          context: context,
-          builder: (context) {
-            return const AlertDialog(
-              content: Text('Ingreso de Sesion Exitosa'),
-            );
-          },
-        );
-      } on FirebaseAuthException catch (e) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: const Text(
-              'Usuario / Contra incorrectos.....',
-              style: TextStyle(fontSize: 20),
-            ),
-            duration: const Duration(milliseconds: 1500),
-            width: 300.0,
-            padding: const EdgeInsets.symmetric(
-              horizontal: 30.0,
-            ),
-            behavior: SnackBarBehavior.floating,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(
-                    10.0)), // Inner padding for SnackBar content.
-          ),
-        );
-      }
     }
   }
 
