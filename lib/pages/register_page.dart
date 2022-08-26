@@ -24,6 +24,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final _lastNameController = TextEditingController();
   final _ageController = TextEditingController();
   var dropDownValue1 = 1;
+  bool _obscureText = true;
 
   @override
   void dispose() {
@@ -42,8 +43,8 @@ class _RegisterPageState extends State<RegisterPage> {
       //create user
       try {
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: _emailController.text,
-          password: _passswordController.text,
+          email: _emailController.text.trim(),
+          password: _passswordController.text.trim(),
         );
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -66,22 +67,14 @@ class _RegisterPageState extends State<RegisterPage> {
         addUserDetails(_firstNameController.text, _lastNameController.text,
             int.parse(_ageController.text), _emailController.text);
       } on FirebaseAuthException catch (e) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: const Text(
-              'Campos Incorrectos',
-              style: TextStyle(fontSize: 20),
-            ),
-            duration: const Duration(milliseconds: 1500),
-            width: 300.0,
-            padding: const EdgeInsets.symmetric(
-              horizontal: 30.0,
-            ),
-            behavior: SnackBarBehavior.floating,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(
-                    10.0)), // Inner padding for SnackBar content.
-          ),
+        print(e);
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              content: Text(e.message.toString()),
+            );
+          },
         );
       }
     }
@@ -255,6 +248,15 @@ class _RegisterPageState extends State<RegisterPage> {
                     hintText: 'Contraseña',
                     fillColor: Colors.grey[200],
                     filled: true,
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        _obscureText = !_obscureText;
+                        setState(() {});
+                      },
+                      icon: Icon(
+                        _obscureText ? Icons.visibility_off : Icons.visibility,
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -281,6 +283,15 @@ class _RegisterPageState extends State<RegisterPage> {
                     hintText: 'Confirmar Contraseña',
                     fillColor: Colors.grey[200],
                     filled: true,
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        _obscureText = !_obscureText;
+                        setState(() {});
+                      },
+                      icon: Icon(
+                        _obscureText ? Icons.visibility_off : Icons.visibility,
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -290,7 +301,6 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
 
               //Sing in
-
               Container(
                 padding: EdgeInsets.only(left: 55, top: 0, right: 70),
                 child: Row(
