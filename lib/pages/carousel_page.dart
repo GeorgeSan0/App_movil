@@ -5,7 +5,7 @@ import 'package:flutter_carousel_slider/carousel_slider_indicators.dart';
 import 'package:flutter_carousel_slider/carousel_slider_transforms.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'hola.dart';
+import 'Hoteles.dart';
 
 class Carousel extends StatefulWidget {
   Carousel({Key? key}) : super(key: key);
@@ -28,7 +28,6 @@ class _CarouselState extends State<Carousel> {
         ),
       ),
       body: CarouselSlider(
-          slideTransform: CubeTransform(),
           slideIndicator: CircularSlideIndicator(
               padding: EdgeInsets.only(bottom: 50),
               currentIndicatorColor: Colors.white),
@@ -85,7 +84,7 @@ class _CarouselState extends State<Carousel> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Hola()),
+                        MaterialPageRoute(builder: (context) => Hoteles()),
                       );
                     },
                     child: const Icon(Icons.hotel),
@@ -144,7 +143,7 @@ class _CarouselState extends State<Carousel> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Hola()),
+                        MaterialPageRoute(builder: (context) => Hoteles()),
                       );
                     },
                     child: const Icon(Icons.hotel),
@@ -203,7 +202,7 @@ class _CarouselState extends State<Carousel> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Hola()),
+                        MaterialPageRoute(builder: (context) => Hoteles()),
                       );
                     },
                     child: const Icon(Icons.hotel),
@@ -262,7 +261,7 @@ class _CarouselState extends State<Carousel> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Hola()),
+                        MaterialPageRoute(builder: (context) => Hoteles()),
                       );
                     },
                     child: const Icon(Icons.hotel),

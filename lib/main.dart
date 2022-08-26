@@ -1,3 +1,4 @@
+import 'package:app_movil/pages/carousel_page.dart';
 import 'package:app_movil/pages/front_page.dart';
 import 'package:app_movil/pages/login_page.dart';
 import 'package:flutter/material.dart';
