@@ -72,7 +72,7 @@ class _RegisterPageState extends State<RegisterPage> {
           context: context,
           builder: (context) {
             return AlertDialog(
-              content: Text(e.message.toString()),
+              content: Text('Registro incorrecto'),
             );
           },
         );

@@ -14,6 +14,7 @@ class hotel_page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       bottomNavigationBar: Padding(
         padding: EdgeInsets.all(8.0),
         child: Row(
@@ -102,7 +103,7 @@ class hotel_page extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.w400,
-                        color: Colors.black),
+                        color: Colors.white),
                   ),
                   Row(
                     children: const [
@@ -132,10 +133,11 @@ class hotel_page extends StatelessWidget {
                       Icon(
                         Icons.location_on,
                         size: 30,
+                        color: Colors.white,
                       ),
                       Text(
                         hotelLocation,
-                        style: TextStyle(fontSize: 24),
+                        style: TextStyle(fontSize: 24, color: Colors.white),
                       ),
                     ],
                   ),
@@ -148,12 +150,12 @@ class hotel_page extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Details',
-                    style: TextStyle(fontSize: 22),
+                    'Detalles',
+                    style: TextStyle(fontSize: 22, color: Colors.white),
                   ),
                   Text(
                     "Hotel is a superior building meant for accommodating 15 or more strangers temporarily for few days. Strangers are charged according to the nature & period of accommodation. Hotel provides both lodging (temporary habitation) & boarding facilities.",
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 20, color: Colors.white),
                   )
                 ],
               ),
