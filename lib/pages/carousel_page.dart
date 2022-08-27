@@ -27,6 +27,7 @@ class _CarouselState extends State<Carousel> {
         ),
       ),
       body: CarouselSlider(
+          slideTransform: CubeTransform(),
           slideIndicator: CircularSlideIndicator(
               padding: EdgeInsets.only(bottom: 50),
               currentIndicatorColor: Colors.white),
