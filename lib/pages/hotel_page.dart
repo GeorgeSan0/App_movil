@@ -1,8 +1,16 @@
+import 'package:app_movil/read%20data/get_hotel.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class Hoteles extends StatelessWidget {
-  const Hoteles({Key? key}) : super(key: key);
+class hotel_page extends StatelessWidget {
+  //hotel_page({Key? key}) : super(key: key);
+  //const DetailScreen({Key? key}) : super(key: key);
+  final String imageURL;
+  final String hotelName;
+  final String hotelLocation;
 
+  hotel_page(this.imageURL, this.hotelName, this.hotelLocation);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,8 +48,7 @@ class Hoteles extends StatelessWidget {
               width: double.infinity,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/hoteles/prueba.jpg'),
-                    fit: BoxFit.cover),
+                    image: AssetImage(imageURL), fit: BoxFit.cover),
               ),
               child: Stack(
                 children: [
@@ -51,11 +58,11 @@ class Hoteles extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          height: 40,
+                          height: 50,
                           decoration: BoxDecoration(
-                              color: Colors.amber,
+                              color: Colors.orange,
                               borderRadius: BorderRadius.circular(12)),
-                          width: 40,
+                          width: 35,
                           child: IconButton(
                             onPressed: () {
                               Navigator.pop(context);
@@ -91,7 +98,7 @@ class Hoteles extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Hotel California",
+                    hotelName,
                     style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.w400,
@@ -127,7 +134,7 @@ class Hoteles extends StatelessWidget {
                         size: 30,
                       ),
                       Text(
-                        'Calle Rio Cristal',
+                        hotelLocation,
                         style: TextStyle(fontSize: 24),
                       ),
                     ],

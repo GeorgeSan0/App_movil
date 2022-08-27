@@ -1,11 +1,10 @@
+import 'package:app_movil/pages/hotel_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_slider/carousel_slider.dart';
 import 'package:flutter_carousel_slider/carousel_slider_indicators.dart';
 import 'package:flutter_carousel_slider/carousel_slider_transforms.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'Hoteles.dart';
 
 class Carousel extends StatefulWidget {
   Carousel({Key? key}) : super(key: key);
@@ -36,9 +35,8 @@ class _CarouselState extends State<Carousel> {
             Container(
               decoration: BoxDecoration(
                 image: const DecorationImage(
-                  image: AssetImage("assets/fondo.jpeg"),
-                  fit: BoxFit.fitHeight,
-                  opacity: 60,
+                  image: AssetImage("assets/fondo.jpg"),
+                  fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.circular(20.0),
                 gradient: const LinearGradient(
@@ -62,7 +60,7 @@ class _CarouselState extends State<Carousel> {
                   Image.asset(
                     'assets/hoteles/hotel1.jpeg',
                     height: 180.0,
-                    fit: BoxFit.scaleDown,
+                    fit: BoxFit.cover,
                   ),
                   const Text("** San Agustin Plaza **",
                       style: TextStyle(
@@ -80,11 +78,16 @@ class _CarouselState extends State<Carousel> {
                     padding: EdgeInsets.symmetric(vertical: 10),
                   ),
                   FloatingActionButton(
-                    backgroundColor: Colors.amber,
+                    backgroundColor: Colors.orange,
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Hoteles()),
+                        MaterialPageRoute(
+                          builder: (context) => hotel_page(
+                              'assets/hoteles/hotel1.jpeg',
+                              "San Agustin Plaza",
+                              "Rio Cristal"),
+                        ),
                       );
                     },
                     child: const Icon(Icons.hotel),
@@ -95,9 +98,8 @@ class _CarouselState extends State<Carousel> {
             Container(
               decoration: BoxDecoration(
                 image: const DecorationImage(
-                  image: AssetImage("assets/fondo.jpeg"),
-                  fit: BoxFit.fitHeight,
-                  opacity: 60,
+                  image: AssetImage("assets/fondo.jpg"),
+                  fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.circular(20.0),
                 gradient: const LinearGradient(
@@ -121,7 +123,7 @@ class _CarouselState extends State<Carousel> {
                   Image.asset(
                     'assets/hoteles/hotel2.jpeg',
                     height: 180.0,
-                    fit: BoxFit.scaleDown,
+                    fit: BoxFit.cover,
                   ),
                   const Text("** San Agustin Plaza **",
                       style: TextStyle(
@@ -143,7 +145,12 @@ class _CarouselState extends State<Carousel> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Hoteles()),
+                        MaterialPageRoute(
+                          builder: (context) => hotel_page(
+                              'assets/hoteles/hotel2.jpeg',
+                              "San Agustin Plaza",
+                              "Rio Cristal"),
+                        ),
                       );
                     },
                     child: const Icon(Icons.hotel),
@@ -154,9 +161,8 @@ class _CarouselState extends State<Carousel> {
             Container(
               decoration: BoxDecoration(
                 image: const DecorationImage(
-                  image: AssetImage("assets/fondo.jpeg"),
-                  fit: BoxFit.fitHeight,
-                  opacity: 60,
+                  image: AssetImage("assets/fondo.jpg"),
+                  fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.circular(20.0),
                 gradient: const LinearGradient(
@@ -180,7 +186,7 @@ class _CarouselState extends State<Carousel> {
                   Image.asset(
                     'assets/hoteles/hotel3.jpeg',
                     height: 180.0,
-                    fit: BoxFit.scaleDown,
+                    fit: BoxFit.cover,
                   ),
                   const Text("** San Agustin Plaza **",
                       style: TextStyle(
@@ -198,11 +204,16 @@ class _CarouselState extends State<Carousel> {
                     padding: EdgeInsets.symmetric(vertical: 10),
                   ),
                   FloatingActionButton(
-                    backgroundColor: Colors.amber,
+                    backgroundColor: Colors.orange,
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Hoteles()),
+                        MaterialPageRoute(
+                          builder: (context) => hotel_page(
+                              'assets/hoteles/hotel3.jpeg',
+                              "San Agustin Plaza",
+                              "Rio Cristal"),
+                        ),
                       );
                     },
                     child: const Icon(Icons.hotel),
@@ -213,9 +224,8 @@ class _CarouselState extends State<Carousel> {
             Container(
               decoration: BoxDecoration(
                 image: const DecorationImage(
-                  image: AssetImage("assets/fondo.jpeg"),
-                  fit: BoxFit.fitHeight,
-                  opacity: 60,
+                  image: AssetImage("assets/fondo.jpg"),
+                  fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.circular(20.0),
                 gradient: const LinearGradient(
@@ -239,7 +249,7 @@ class _CarouselState extends State<Carousel> {
                   Image.asset(
                     'assets/hoteles/hotel4.jpeg',
                     height: 180.0,
-                    fit: BoxFit.scaleDown,
+                    fit: BoxFit.cover,
                   ),
                   const Text("** San Agustin Plaza **",
                       style: TextStyle(
@@ -257,11 +267,16 @@ class _CarouselState extends State<Carousel> {
                     padding: EdgeInsets.symmetric(vertical: 10),
                   ),
                   FloatingActionButton(
-                    backgroundColor: Colors.amber,
+                    backgroundColor: Colors.orange,
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Hoteles()),
+                        MaterialPageRoute(
+                          builder: (context) => hotel_page(
+                              'assets/hoteles/hotel4.jpeg',
+                              "San Agustin Plaza",
+                              "Rio Cristal"),
+                        ),
                       );
                     },
                     child: const Icon(Icons.hotel),
