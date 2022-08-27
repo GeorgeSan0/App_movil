@@ -72,7 +72,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         backgroundColor: Colors.transparent,
         appBar: AppBar(
           centerTitle: true,
-          backgroundColor: Colors.orange,
+          backgroundColor: Colors.transparent,
           title: Text(
             "Recuperar Contraseña",
             style: GoogleFonts.bebasNeue(fontSize: 25, color: Colors.black),

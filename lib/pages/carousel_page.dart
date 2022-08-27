@@ -17,19 +17,18 @@ class _CarouselState extends State<Carousel> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       backgroundColor: Colors.black,
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.orange,
-        title: Text(
-          "EXPLORE",
-          style: GoogleFonts.bebasNeue(fontSize: 30, color: Colors.black),
-        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
       ),
-      body: CarouselSlider(
+      body: Container(
+        child: CarouselSlider(
           slideTransform: CubeTransform(),
           slideIndicator: CircularSlideIndicator(
-              padding: EdgeInsets.only(bottom: 50),
+              padding: EdgeInsets.only(bottom: 20),
               currentIndicatorColor: Colors.white),
           unlimitedMode: true,
           children: [
@@ -53,31 +52,20 @@ class _CarouselState extends State<Carousel> {
                     ]),
               ),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+                //crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
+                  Expanded(
+                    child: Image.asset(
+                      'assets/hoteles/hotel1.jpeg',
+                      fit: BoxFit.fill,
+                    ),
                   ),
-                  Image.asset(
-                    'assets/hoteles/hotel1.jpeg',
-                    height: 180.0,
-                    fit: BoxFit.cover,
-                  ),
-                  const Text("** San Agustin Plaza **",
+                  const Text("San Agustin Plaza",
                       style: TextStyle(
                           height: 3,
                           color: Colors.white,
                           fontSize: 25.0,
                           fontWeight: FontWeight.bold)),
-                  const Text("Habitaciones desde 90 dolares",
-                      style: TextStyle(
-                          height: 3,
-                          color: Colors.black,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold)),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
-                  ),
                   FloatingActionButton(
                     backgroundColor: Colors.orange,
                     onPressed: () {
@@ -93,6 +81,13 @@ class _CarouselState extends State<Carousel> {
                     },
                     child: const Icon(Icons.hotel),
                   ),
+                  const Text("",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          height: 3,
+                          color: Colors.white,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold)),
                 ],
               ),
             ),
@@ -116,31 +111,20 @@ class _CarouselState extends State<Carousel> {
                     ]),
               ),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
+                  Expanded(
+                    child: Image.asset(
+                      'assets/hoteles/hotel2.jpeg',
+                      height: 180.0,
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                  Image.asset(
-                    'assets/hoteles/hotel2.jpeg',
-                    height: 180.0,
-                    fit: BoxFit.cover,
-                  ),
-                  const Text("** San Agustin Plaza **",
+                  const Text("San Agustin Plaza",
                       style: TextStyle(
                           height: 3,
                           color: Colors.white,
                           fontSize: 25.0,
                           fontWeight: FontWeight.bold)),
-                  const Text("Habitaciones desde 90 dolares",
-                      style: TextStyle(
-                          height: 3,
-                          color: Colors.black,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold)),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
-                  ),
                   FloatingActionButton(
                     backgroundColor: Colors.orange,
                     onPressed: () {
@@ -156,6 +140,11 @@ class _CarouselState extends State<Carousel> {
                     },
                     child: const Icon(Icons.hotel),
                   ),
+                  const Text("",
+                      style: TextStyle(
+                        height: 3,
+                        fontSize: 20.0,
+                      )),
                 ],
               ),
             ),
@@ -179,31 +168,20 @@ class _CarouselState extends State<Carousel> {
                     ]),
               ),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
+                  Expanded(
+                    child: Image.asset(
+                      'assets/hoteles/hotel3.jpeg',
+                      height: 180.0,
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                  Image.asset(
-                    'assets/hoteles/hotel3.jpeg',
-                    height: 180.0,
-                    fit: BoxFit.cover,
-                  ),
-                  const Text("** San Agustin Plaza **",
+                  const Text("San Agustin Plaza",
                       style: TextStyle(
                           height: 3,
                           color: Colors.white,
                           fontSize: 25.0,
                           fontWeight: FontWeight.bold)),
-                  const Text("Habitaciones desde 90 dolares",
-                      style: TextStyle(
-                          height: 3,
-                          color: Colors.black,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold)),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
-                  ),
                   FloatingActionButton(
                     backgroundColor: Colors.orange,
                     onPressed: () {
@@ -219,6 +197,11 @@ class _CarouselState extends State<Carousel> {
                     },
                     child: const Icon(Icons.hotel),
                   ),
+                  const Text("",
+                      style: TextStyle(
+                        height: 3,
+                        fontSize: 20.0,
+                      )),
                 ],
               ),
             ),
@@ -242,31 +225,20 @@ class _CarouselState extends State<Carousel> {
                     ]),
               ),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
+                  Expanded(
+                    child: Image.asset(
+                      'assets/hoteles/hotel4.jpeg',
+                      height: 180.0,
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                  Image.asset(
-                    'assets/hoteles/hotel4.jpeg',
-                    height: 180.0,
-                    fit: BoxFit.cover,
-                  ),
-                  const Text("** San Agustin Plaza **",
+                  const Text(" San Agustin Plaza",
                       style: TextStyle(
                           height: 3,
                           color: Colors.white,
                           fontSize: 25.0,
                           fontWeight: FontWeight.bold)),
-                  const Text("Habitaciones desde 90 dolares",
-                      style: TextStyle(
-                          height: 3,
-                          color: Colors.black,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold)),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
-                  ),
                   FloatingActionButton(
                     backgroundColor: Colors.orange,
                     onPressed: () {
@@ -282,10 +254,17 @@ class _CarouselState extends State<Carousel> {
                     },
                     child: const Icon(Icons.hotel),
                   ),
+                  const Text("",
+                      style: TextStyle(
+                        height: 3,
+                        fontSize: 20.0,
+                      )),
                 ],
               ),
             )
-          ]),
+          ],
+        ),
+      ),
     );
   }
 }

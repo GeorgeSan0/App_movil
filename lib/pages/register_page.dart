@@ -24,7 +24,8 @@ class _RegisterPageState extends State<RegisterPage> {
   final _lastNameController = TextEditingController();
   final _ageController = TextEditingController();
   var dropDownValue1 = 1;
-  bool _obscureText = true;
+  bool _obscureText1 = true;
+  bool _obscureText2 = true;
 
   @override
   void dispose() {
@@ -72,7 +73,8 @@ class _RegisterPageState extends State<RegisterPage> {
           context: context,
           builder: (context) {
             return AlertDialog(
-              content: Text('Registro incorrecto'),
+              content: Text(
+                  'Contraseña debe tener mas de 6 Caracteres-Correo Existente'),
             );
           },
         );
@@ -234,7 +236,7 @@ class _RegisterPageState extends State<RegisterPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: TextField(
-                  obscureText: true,
+                  obscureText: _obscureText1,
                   controller: _passswordController,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
@@ -250,11 +252,11 @@ class _RegisterPageState extends State<RegisterPage> {
                     filled: true,
                     suffixIcon: IconButton(
                       onPressed: () {
-                        _obscureText = !_obscureText;
+                        _obscureText1 = !_obscureText1;
                         setState(() {});
                       },
                       icon: Icon(
-                        _obscureText ? Icons.visibility_off : Icons.visibility,
+                        _obscureText1 ? Icons.visibility_off : Icons.visibility,
                       ),
                     ),
                   ),
@@ -269,7 +271,7 @@ class _RegisterPageState extends State<RegisterPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: TextField(
-                  obscureText: true,
+                  obscureText: _obscureText2,
                   controller: _confirmpasswordController,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
@@ -285,11 +287,11 @@ class _RegisterPageState extends State<RegisterPage> {
                     filled: true,
                     suffixIcon: IconButton(
                       onPressed: () {
-                        _obscureText = !_obscureText;
+                        _obscureText2 = !_obscureText2;
                         setState(() {});
                       },
                       icon: Icon(
-                        _obscureText ? Icons.visibility_off : Icons.visibility,
+                        _obscureText2 ? Icons.visibility_off : Icons.visibility,
                       ),
                     ),
                   ),

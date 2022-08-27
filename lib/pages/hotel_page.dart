@@ -21,13 +21,14 @@ class hotel_page extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
-              '250',
-              style: TextStyle(fontSize: 40),
+              '25 Dolares',
+              style: TextStyle(fontSize: 25, color: Colors.white),
             ),
             Container(
-              height: 60,
+              alignment: Alignment.bottomLeft,
+              height: 45,
               child: MaterialButton(
-                minWidth: 280,
+                minWidth: 200,
                 onPressed: () {},
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12)),
@@ -73,18 +74,6 @@ class hotel_page extends StatelessWidget {
                               size: 30,
                               color: Colors.white,
                             ),
-                          ),
-                        ),
-                        Container(
-                          height: 40,
-                          decoration: BoxDecoration(
-                              color: Colors.orange,
-                              borderRadius: BorderRadius.circular(12)),
-                          width: 40,
-                          child: Icon(
-                            Icons.favorite_border,
-                            size: 30,
-                            color: Colors.white,
                           ),
                         ),
                       ],
