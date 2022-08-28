@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
-  ForgotPasswordPage({Key? key}) : super(key: key);
+  const ForgotPasswordPage({Key? key}) : super(key: key);
 
   @override
   State<ForgotPasswordPage> createState() => _ForgotPasswordPageState();
@@ -23,41 +23,31 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       await FirebaseAuth.instance
           .sendPasswordResetEmail(email: _emailController.text.trim());
       print(_emailController.text.toString());
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: const Text(
-            'Registro Correcto',
-            style: TextStyle(fontSize: 20),
-          ),
-          duration: const Duration(milliseconds: 1500),
-          width: 300.0,
-          padding: const EdgeInsets.symmetric(
-            horizontal: 30.0,
-          ),
-          behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(
-                  10.0)), // Inner padding for SnackBar content.
-        ),
+      showDialog(
+        context: context,
+        builder: (context) {
+          return const AlertDialog(
+            backgroundColor: Colors.orange,
+            content: Text(
+              'Correo de Recuperacion de Contraseña enviado!!',
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+          );
+        },
       );
     } on FirebaseAuthException catch (e) {
       print(e);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: const Text(
-            'Correo Incorrecto',
-            style: TextStyle(fontSize: 20),
-          ),
-          duration: const Duration(milliseconds: 1500),
-          width: 300.0,
-          padding: const EdgeInsets.symmetric(
-            horizontal: 30.0,
-          ),
-          behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(
-                  10.0)), // Inner padding for SnackBar content.
-        ),
+      showDialog(
+        context: context,
+        builder: (context) {
+          return const AlertDialog(
+            backgroundColor: Colors.orange,
+            content: Text(
+              'Correo Ingresado no encontrado!!',
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+          );
+        },
       );
     }
   }
@@ -65,7 +55,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage('assets/reset.png'), fit: BoxFit.cover)),
       child: Scaffold(
@@ -81,10 +71,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image(image: AssetImage('assets/password.png')),
+            const Image(image: AssetImage('assets/password.png')),
             const Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: const Text(
+              padding: EdgeInsets.symmetric(horizontal: 25.0),
+              child: Text(
                 'Ingresa tu Correo con el cual quieres recuperar tu contrseña',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 20, color: Colors.white),

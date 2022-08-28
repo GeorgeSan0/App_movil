@@ -1,10 +1,6 @@
-import 'package:app_movil/pages/carousel_page.dart';
 import 'package:app_movil/pages/front_page.dart';
-import 'package:app_movil/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-
-import 'auth/main_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +14,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: FrontPage(),
     );

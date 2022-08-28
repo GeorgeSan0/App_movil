@@ -1,18 +1,16 @@
 import 'package:app_movil/pages/hotel_page.dart';
 import 'package:app_movil/pages/hotel_page_four.dart';
 import 'package:app_movil/pages/hotel_page_three.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_slider/carousel_slider.dart';
 import 'package:flutter_carousel_slider/carousel_slider_indicators.dart';
 import 'package:flutter_carousel_slider/carousel_slider_transforms.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'hotel_page_two.dart';
 
 class Carousel extends StatefulWidget {
-  Carousel({Key? key}) : super(key: key);
+  const Carousel({Key? key}) : super(key: key);
 
   @override
   State<Carousel> createState() => _CarouselState();

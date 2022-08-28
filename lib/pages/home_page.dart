@@ -1,5 +1,4 @@
 import 'package:app_movil/pages/stack_container.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -7,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'carousel_page.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -157,7 +156,7 @@ class _HomePageState extends State<HomePage> {
                   borderRadius: BorderRadius.circular(15.0)),
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Carousel()));
+                    MaterialPageRoute(builder: (context) => const Carousel()));
               },
               child: const Text(
                 "Explorar",
@@ -185,7 +184,7 @@ class ButtonWidgetEx1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.all(0),
+      margin: const EdgeInsets.all(0),
       elevation: 10,
       child: Column(
         children: <Widget>[

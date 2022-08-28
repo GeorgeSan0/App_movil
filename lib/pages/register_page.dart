@@ -72,7 +72,7 @@ class _RegisterPageState extends State<RegisterPage> {
         showDialog(
           context: context,
           builder: (context) {
-            return AlertDialog(
+            return const AlertDialog(
               content: Text(
                   'Contraseña debe tener mas de 6 Caracteres-Correo Existente'),
             );
@@ -104,7 +104,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage('assets/login.png'), fit: BoxFit.cover)),
       child: Scaffold(
@@ -113,8 +113,7 @@ class _RegisterPageState extends State<RegisterPage> {
           child: SingleChildScrollView(
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Image(image: AssetImage('assets/register.png')),
-
+              const Image(image: AssetImage('assets/register.png')),
               //Hello Again
               const SizedBox(
                 height: 10,
@@ -304,7 +303,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
               //Sing in
               Container(
-                padding: EdgeInsets.only(left: 55, top: 0, right: 70),
+                padding: const EdgeInsets.only(left: 55, top: 0, right: 70),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

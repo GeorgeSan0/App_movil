@@ -18,28 +18,19 @@ class _LoginPageState extends State<LoginPage> {
   bool _obscureText = true;
 
   Future singIn() async {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return Center(child: CircularProgressIndicator());
+      },
+    );
+
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: _emailController.text,
         password: _passswordController.text,
       );
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: const Text(
-            'Ingreso de Sesion Exitosa',
-            style: TextStyle(fontSize: 20),
-          ),
-          duration: const Duration(milliseconds: 1500),
-          width: 300.0,
-          padding: const EdgeInsets.symmetric(
-            horizontal: 30.0,
-          ),
-          behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(
-                  10.0)), // Inner padding for SnackBar content.
-        ),
-      );
+      Navigator.of(context).pop();
     } on FirebaseAuthException catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -71,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage('assets/login.png'), fit: BoxFit.cover)),
       child: Scaffold(
@@ -80,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
           child: SingleChildScrollView(
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Image(image: AssetImage('assets/montain.png')),
+              const Image(image: AssetImage('assets/montain.png')),
 
               //Hello Again
               Text(
@@ -176,7 +167,7 @@ class _LoginPageState extends State<LoginPage> {
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return ForgotPasswordPage();
+                              return const ForgotPasswordPage();
                             },
                           ),
                         );
@@ -196,7 +187,7 @@ class _LoginPageState extends State<LoginPage> {
 
               //Sing in
               Container(
-                padding: EdgeInsets.only(left: 55, top: 0, right: 70),
+                padding: const EdgeInsets.only(left: 55, top: 0, right: 70),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

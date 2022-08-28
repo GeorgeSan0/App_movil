@@ -15,20 +15,20 @@ class _FrontPageState extends State<FrontPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: new Stack(
+      body: Stack(
         fit: StackFit.expand,
         children: <Widget>[
-          new Image(
-              image: new AssetImage('assets/cotopaxi.jpg'),
+          const Image(
+              image: AssetImage('assets/cotopaxi.jpg'),
               fit: BoxFit.cover,
               color: Colors.black54,
               colorBlendMode: BlendMode.darken),
-          new Center(
+          const Center(
               child: Image(
-            image: new AssetImage('assets/cotopaxi.jpg'),
+            image: AssetImage('assets/cotopaxi.jpg'),
             height: 210,
           )),
-          new Center(
+          Center(
             child: Text(
               'Llacta Nina Tours',
               style: GoogleFonts.bebasNeue(
