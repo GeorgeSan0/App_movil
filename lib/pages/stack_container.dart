@@ -1,10 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class stack_container extends StatelessWidget {
-  const stack_container({
+  stack_container({
     Key? key,
   }) : super(key: key);
+
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +20,7 @@ class stack_container extends StatelessWidget {
           ClipPath(
             clipper: MyCustomClipper1(),
             child: Container(
-              height: 180.0,
+              height: 150.0,
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/cotopaxi.jpg'),
@@ -33,19 +36,44 @@ class stack_container extends StatelessWidget {
               children: <Widget>[
                 CircleAvatar(
                   backgroundColor: Colors.green.shade300,
-                  radius: 64.0,
-                  child: CircleAvatar(
+                  radius: 60.0,
+                  child: const CircleAvatar(
                     radius: 100,
                     backgroundImage: NetworkImage('https://picsum.photos/200'),
                   ),
                 ),
-                SizedBox(height: 8.0),
+                const SizedBox(height: 4.0),
                 //El nombre sacado de la base de datos
-                Text("Dennis Caiza",
-                    style: TextStyle(
-                        fontSize: 25.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white)),
+                StreamBuilder(
+                  stream: users.doc('2N2Qz2iRB1yI6mppBXz8').snapshots(),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    if (snapshot.connectionState == ConnectionState.active) {
+                      return Text(
+                        snapshot.data.data()['first name'],
+                        style: const TextStyle(
+                          color: Colors.white,
+                        ),
+                      );
+                    } else {
+                      return const CircularProgressIndicator();
+                    }
+                  },
+                ),
+                StreamBuilder(
+                  stream: users.doc('2N2Qz2iRB1yI6mppBXz8').snapshots(),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    if (snapshot.connectionState == ConnectionState.active) {
+                      return Text(
+                        snapshot.data.data()['last name'],
+                        style: const TextStyle(
+                          color: Colors.white,
+                        ),
+                      );
+                    } else {
+                      return const CircularProgressIndicator();
+                    }
+                  },
+                ),
                 IconButton(
                     tooltip: 'Cerrar Sesión',
                     onPressed: () {

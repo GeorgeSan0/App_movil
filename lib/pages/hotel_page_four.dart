@@ -1,14 +1,15 @@
 import 'package:app_movil/read%20data/get_hotel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class hotel_page extends StatelessWidget {
+class hotel_page_four extends StatelessWidget {
   //hotel_page({Key? key}) : super(key: key);
   //const DetailScreen({Key? key}) : super(key: key);
   final String imageURL;
 
-  hotel_page(this.imageURL, {Key? key}) : super(key: key);
+  hotel_page_four(this.imageURL, {Key? key}) : super(key: key);
   CollectionReference hotel = FirebaseFirestore.instance.collection('hotels');
   @override
   Widget build(BuildContext context) {
@@ -87,7 +88,7 @@ class hotel_page extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   StreamBuilder(
-                    stream: hotel.doc('naOr5F4SiNlmC9PKPivD').snapshots(),
+                    stream: hotel.doc('0VBi8MP4YZZQt3BkVBgl').snapshots(),
                     builder: (BuildContext context, AsyncSnapshot snapshot) {
                       if (snapshot.connectionState == ConnectionState.active) {
                         return Padding(
@@ -136,7 +137,7 @@ class hotel_page extends StatelessWidget {
                         color: Colors.white,
                       ),
                       StreamBuilder(
-                        stream: hotel.doc('naOr5F4SiNlmC9PKPivD').snapshots(),
+                        stream: hotel.doc('0VBi8MP4YZZQt3BkVBgl').snapshots(),
                         builder:
                             (BuildContext context, AsyncSnapshot snapshot) {
                           if (snapshot.connectionState ==
@@ -169,7 +170,7 @@ class hotel_page extends StatelessWidget {
                     style: TextStyle(fontSize: 22, color: Colors.white),
                   ),
                   StreamBuilder(
-                    stream: hotel.doc('naOr5F4SiNlmC9PKPivD').snapshots(),
+                    stream: hotel.doc('0VBi8MP4YZZQt3BkVBgl').snapshots(),
                     builder: (BuildContext context, AsyncSnapshot snapshot) {
                       if (snapshot.connectionState == ConnectionState.active) {
                         return Padding(

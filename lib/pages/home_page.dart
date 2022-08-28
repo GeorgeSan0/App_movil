@@ -1,13 +1,10 @@
-import 'package:app_movil/pages/login_page.dart';
 import 'package:app_movil/pages/stack_container.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../read data/get_user_name.dart';
 import 'carousel_page.dart';
-import 'front_page.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -21,27 +18,6 @@ class _HomePageState extends State<HomePage> {
   var toggleValue1 = [true, false, true];
   var dropDownValue1 = 1;
   var dropDownValue2 = 1;
-
-  ////Documents IDs
-  List<String> docIDs = [];
-
-  get data => null;
-
-  // get docids
-  Future getDocId() async {
-    await FirebaseFirestore.instance
-        .collection('users')
-        .get()
-        .then((snapshot) => snapshot.docs.forEach((element) {
-              print(element.reference);
-            }));
-  }
-
-  @override
-  void initSatet() {
-    getDocId();
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,9 +33,9 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Column(
         children: <Widget>[
-          const stack_container(),
+          stack_container(),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Column(
                 children: [
@@ -72,9 +48,9 @@ class _HomePageState extends State<HomePage> {
                   const Icon(
                     Icons.email_outlined,
                     color: Colors.white,
-                    size: 35.0,
+                    size: 10.0,
                   ),
-                  const SizedBox(height: 8.0),
+                  const SizedBox(height: 10.0),
                   const Text("Correo",
                       style: TextStyle(fontSize: 13.0, color: Colors.white)),
                 ],
@@ -95,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                   Text(
                     '# de dias',
                     style: GoogleFonts.bebasNeue(
-                        fontSize: 18, color: Colors.white),
+                        fontSize: 15, color: Colors.white),
                     textAlign: TextAlign.right,
                   ),
                 ],
@@ -110,7 +86,7 @@ class _HomePageState extends State<HomePage> {
                   Text('Presupuesto',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.bebasNeue(
-                          fontSize: 16, color: Colors.white)),
+                          fontSize: 15, color: Colors.white)),
                 ],
               ),
             ],
@@ -170,7 +146,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
-          const SizedBox(height: 30.0),
+          const SizedBox(height: 20.0),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10.0),
             child: MaterialButton(

@@ -1,10 +1,15 @@
 import 'package:app_movil/pages/hotel_page.dart';
+import 'package:app_movil/pages/hotel_page_four.dart';
+import 'package:app_movil/pages/hotel_page_three.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_slider/carousel_slider.dart';
 import 'package:flutter_carousel_slider/carousel_slider_indicators.dart';
 import 'package:flutter_carousel_slider/carousel_slider_transforms.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'hotel_page_two.dart';
 
 class Carousel extends StatefulWidget {
   Carousel({Key? key}) : super(key: key);
@@ -14,6 +19,7 @@ class Carousel extends StatefulWidget {
 }
 
 class _CarouselState extends State<Carousel> {
+  CollectionReference hotel = FirebaseFirestore.instance.collection('hotels');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,12 +66,26 @@ class _CarouselState extends State<Carousel> {
                       fit: BoxFit.fill,
                     ),
                   ),
-                  const Text("San Agustin Plaza",
-                      style: TextStyle(
-                          height: 3,
-                          color: Colors.white,
-                          fontSize: 25.0,
-                          fontWeight: FontWeight.bold)),
+                  StreamBuilder(
+                    stream: hotel.doc('naOr5F4SiNlmC9PKPivD').snapshots(),
+                    builder: (BuildContext context, AsyncSnapshot snapshot) {
+                      if (snapshot.connectionState == ConnectionState.active) {
+                        return Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Text(
+                            snapshot.data.data()['name'],
+                            style: const TextStyle(
+                                height: 3,
+                                color: Colors.white,
+                                fontSize: 25.0,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        );
+                      } else {
+                        return const CircularProgressIndicator();
+                      }
+                    },
+                  ),
                   FloatingActionButton(
                     backgroundColor: Colors.orange,
                     onPressed: () {
@@ -73,9 +93,8 @@ class _CarouselState extends State<Carousel> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => hotel_page(
-                              'assets/hoteles/hotel1.jpeg',
-                              "San Agustin Plaza",
-                              "Rio Cristal"),
+                            'assets/hoteles/hotel1.jpeg',
+                          ),
                         ),
                       );
                     },
@@ -119,22 +138,35 @@ class _CarouselState extends State<Carousel> {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  const Text("San Agustin Plaza",
-                      style: TextStyle(
-                          height: 3,
-                          color: Colors.white,
-                          fontSize: 25.0,
-                          fontWeight: FontWeight.bold)),
+                  StreamBuilder(
+                    stream: hotel.doc('7jCGhqfRidASLlmHnSX8').snapshots(),
+                    builder: (BuildContext context, AsyncSnapshot snapshot) {
+                      if (snapshot.connectionState == ConnectionState.active) {
+                        return Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Text(
+                            snapshot.data.data()['name'],
+                            style: const TextStyle(
+                                height: 3,
+                                color: Colors.white,
+                                fontSize: 25.0,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        );
+                      } else {
+                        return const CircularProgressIndicator();
+                      }
+                    },
+                  ),
                   FloatingActionButton(
                     backgroundColor: Colors.orange,
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => hotel_page(
-                              'assets/hoteles/hotel2.jpeg',
-                              "San Agustin Plaza",
-                              "Rio Cristal"),
+                          builder: (context) => hotel_page_two(
+                            'assets/hoteles/hotel2.jpeg',
+                          ),
                         ),
                       );
                     },
@@ -176,22 +208,35 @@ class _CarouselState extends State<Carousel> {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  const Text("San Agustin Plaza",
-                      style: TextStyle(
-                          height: 3,
-                          color: Colors.white,
-                          fontSize: 25.0,
-                          fontWeight: FontWeight.bold)),
+                  StreamBuilder(
+                    stream: hotel.doc('n1Mz54LQlB2uuNg1LHNl').snapshots(),
+                    builder: (BuildContext context, AsyncSnapshot snapshot) {
+                      if (snapshot.connectionState == ConnectionState.active) {
+                        return Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Text(
+                            snapshot.data.data()['name'],
+                            style: const TextStyle(
+                                height: 3,
+                                color: Colors.white,
+                                fontSize: 25.0,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        );
+                      } else {
+                        return const CircularProgressIndicator();
+                      }
+                    },
+                  ),
                   FloatingActionButton(
                     backgroundColor: Colors.orange,
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => hotel_page(
-                              'assets/hoteles/hotel3.jpeg',
-                              "San Agustin Plaza",
-                              "Rio Cristal"),
+                          builder: (context) => hotel_page_three(
+                            'assets/hoteles/hotel3.jpeg',
+                          ),
                         ),
                       );
                     },
@@ -233,22 +278,35 @@ class _CarouselState extends State<Carousel> {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  const Text(" San Agustin Plaza",
-                      style: TextStyle(
-                          height: 3,
-                          color: Colors.white,
-                          fontSize: 25.0,
-                          fontWeight: FontWeight.bold)),
+                  StreamBuilder(
+                    stream: hotel.doc('0VBi8MP4YZZQt3BkVBgl').snapshots(),
+                    builder: (BuildContext context, AsyncSnapshot snapshot) {
+                      if (snapshot.connectionState == ConnectionState.active) {
+                        return Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Text(
+                            snapshot.data.data()['name'],
+                            style: const TextStyle(
+                                height: 3,
+                                color: Colors.white,
+                                fontSize: 25.0,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        );
+                      } else {
+                        return const CircularProgressIndicator();
+                      }
+                    },
+                  ),
                   FloatingActionButton(
                     backgroundColor: Colors.orange,
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => hotel_page(
-                              'assets/hoteles/hotel4.jpeg',
-                              "San Agustin Plaza",
-                              "Rio Cristal"),
+                          builder: (context) => hotel_page_four(
+                            'assets/hoteles/hotel4.jpeg',
+                          ),
                         ),
                       );
                     },
